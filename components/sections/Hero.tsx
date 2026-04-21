@@ -75,9 +75,14 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-grid bg-[length:60px_60px]">
-      {/* Background blobs */}
-      <div className="blob blob-cyan w-[600px] h-[600px] top-[-100px] left-[-150px] opacity-60" />
-      <div className="blob blob-violet w-[500px] h-[500px] bottom-[-80px] right-[-100px] opacity-50" />
+      {/* Gradient atmosphere */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_0%_0%,rgba(34,211,238,0.18),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_100%_100%,rgba(129,140,248,0.18),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_30%_at_70%_20%,rgba(129,140,248,0.10),transparent)] pointer-events-none" />
+      {/* Diagonal color band */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#22d3ee]/[0.04] via-transparent to-[#818cf8]/[0.06] pointer-events-none" />
+      <div className="blob blob-cyan w-[700px] h-[700px] top-[-150px] left-[-200px] opacity-50" />
+      <div className="blob blob-violet w-[600px] h-[600px] bottom-[-100px] right-[-150px] opacity-45" />
 
       <div className="max-w-7xl mx-auto px-6 pt-28 pb-20 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -150,7 +155,7 @@ export default function Hero() {
               custom={4}
               className="flex flex-wrap gap-3"
             >
-              <a href="#projects" className="btn-primary">
+              <a href="#projects" className="btn-primary" onClick={(e) => { e.preventDefault(); document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }); }}>
                 View My Work <ArrowRight size={16} />
               </a>
               <a href={`mailto:${SOCIAL.email}`} className="btn-secondary">
@@ -202,20 +207,23 @@ export default function Hero() {
               initial="hidden"
               animate="show"
               custom={6}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-white/5"
+              className="space-y-4 pt-2"
             >
-              {STATS.map((stat) => (
-                <div key={stat.label} className="space-y-1">
-                  <p className="font-display font-black text-2xl gradient-text">
-                    {mounted ? (
-                      <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                    ) : (
-                      `${stat.value}${stat.suffix}`
-                    )}
-                  </p>
-                  <p className="text-xs text-slate-500 leading-snug">{stat.label}</p>
-                </div>
-              ))}
+              <div className="gradient-divider" />
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {STATS.map((stat) => (
+                  <div key={stat.label} className="space-y-1">
+                    <p className="font-display font-black text-2xl gradient-text">
+                      {mounted ? (
+                        <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                      ) : (
+                        `${stat.value}${stat.suffix}`
+                      )}
+                    </p>
+                    <p className="text-xs text-slate-500 leading-snug">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </div>
 

@@ -10,13 +10,14 @@ export default function Contact() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="contact" ref={ref} className="relative py-32 px-6 overflow-hidden">
-      {/* Background blobs */}
-      <div className="blob blob-cyan w-[600px] h-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10" />
-      <div className="blob blob-violet w-[400px] h-[400px] top-1/2 left-1/4 -translate-y-1/2 opacity-10" />
-
+    <section id="contact" ref={ref} className="relative py-20 px-6 overflow-hidden">
       {/* Grid bg */}
       <div className="absolute inset-0 bg-grid bg-[length:60px_60px] opacity-40" />
+      {/* Original blobs */}
+      <div className="blob blob-cyan w-[700px] h-[700px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.12]" />
+      <div className="blob blob-violet w-[500px] h-[500px] top-1/2 left-1/4 -translate-y-1/2 opacity-10" />
+      {/* Original centred horizontal glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r from-[#22d3ee]/[0.06] via-[#818cf8]/[0.08] to-[#22d3ee]/[0.06] blur-3xl rounded-full pointer-events-none" />
 
       <div className="max-w-4xl mx-auto relative text-center">
         <motion.div
@@ -50,7 +51,7 @@ export default function Contact() {
           <motion.a
             href={`mailto:${SOCIAL.email}`}
             whileHover={{ scale: 1.03 }}
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl border border-white/8 bg-white/[0.03] backdrop-blur-sm text-slate-300 hover:text-white hover:border-cyan-DEFAULT/30 transition-all duration-200 text-lg font-medium group"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl border border-[#22d3ee]/20 bg-gradient-to-r from-[#22d3ee]/5 to-[#818cf8]/5 backdrop-blur-sm text-slate-300 hover:text-white hover:border-[#22d3ee]/40 hover:from-[#22d3ee]/10 hover:to-[#818cf8]/10 transition-all duration-200 text-lg font-medium group shadow-[0_0_30px_rgba(34,211,238,0.07)]"
           >
             <Mail size={22} className="text-cyan-DEFAULT" />
             {SOCIAL.email}

@@ -362,8 +362,13 @@ export default function Projects() {
     val === "all" ? PROJECTS.length : PROJECTS.filter((p) => p.category === val).length;
 
   return (
-    <section id="projects" ref={ref} className="relative py-32 px-6">
-      <div className="blob blob-cyan w-[500px] h-[500px] bottom-0 right-[-100px] opacity-15" />
+    <section id="projects" ref={ref} className="relative py-32 px-6 overflow-hidden">
+      {/* Gradient atmosphere */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(129,140,248,0.12),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_100%_100%,rgba(34,211,238,0.10),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#818cf8]/[0.03] to-transparent pointer-events-none" />
+      <div className="blob blob-cyan w-[600px] h-[600px] bottom-0 right-[-100px] opacity-20" />
+      <div className="blob blob-violet w-[400px] h-[400px] top-0 left-[-100px] opacity-15" />
 
       <div className="max-w-7xl mx-auto">
         {/* Heading */}

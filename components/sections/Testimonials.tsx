@@ -9,7 +9,8 @@ function StarRow() {
   return (
     <div className="flex gap-0.5">
       {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#22d3ee">
+        <svg key={i} width="14" height="14" viewBox="0 0 24 24"
+          fill={i < 3 ? "#22d3ee" : "#818cf8"}>
           <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
         </svg>
       ))}
@@ -19,8 +20,9 @@ function StarRow() {
 
 function TestimonialCard({ t }: { t: (typeof TESTIMONIALS)[0] }) {
   return (
-    <div className="glow-card rounded-2xl p-7 flex flex-col gap-5 w-[340px] flex-shrink-0">
-      <Quote size={28} className="text-cyan-DEFAULT/40" />
+    <div className="glow-card card-accent-top rounded-2xl p-7 flex flex-col gap-5 w-[340px] flex-shrink-0">
+      <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-[#22d3ee] to-[#818cf8]" />
+      <Quote size={28} className="text-[#22d3ee]/50" />
       <p className="text-slate-300 text-sm leading-relaxed flex-1 italic">&ldquo;{t.quote}&rdquo;</p>
       <div className="flex items-center justify-between pt-2 border-t border-white/5">
         <div className="flex items-center gap-3">
@@ -47,8 +49,12 @@ export default function Testimonials() {
   return (
     <section id="testimonials" ref={ref} className="relative py-32 overflow-hidden bg-[#070710]">
       {/* Dividers */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-DEFAULT/20 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-violet-DEFAULT/20 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#22d3ee]/30 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#818cf8]/30 to-transparent" />
+      {/* Rich color atmosphere */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_50%_at_50%_0%,rgba(34,211,238,0.09),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_100%,rgba(129,140,248,0.10),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#22d3ee]/[0.03] via-transparent to-[#818cf8]/[0.04] pointer-events-none" />
 
       <div className="px-6">
         <div className="max-w-7xl mx-auto">

@@ -179,11 +179,51 @@ body {
 .section-heading::after {
   content: "";
   display: block;
-  width: 60px;
+  width: 80px;
   height: 3px;
-  background: linear-gradient(90deg, #22d3ee, #818cf8);
+  background: linear-gradient(90deg, #22d3ee, #818cf8, #22d3ee);
+  background-size: 200% 100%;
   border-radius: 9999px;
-  margin-top: 12px;
+  margin-top: 14px;
+  animation: shimmer-text 3s linear infinite;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.5);
+}
+
+/* ─── Gradient top-border card accent ───────────────── */
+.card-accent-top {
+  position: relative;
+  overflow: hidden;
+}
+.card-accent-top::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #22d3ee, #818cf8);
+  border-radius: 9999px 9999px 0 0;
+}
+
+/* ─── Gradient left-border card accent ──────────────── */
+.card-accent-left {
+  position: relative;
+}
+.card-accent-left::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 16px;
+  width: 2px;
+  background: linear-gradient(to bottom, #22d3ee, #818cf8);
+  border-radius: 9999px;
+}
+
+/* ─── Gradient horizontal divider ───────────────────── */
+.gradient-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.35), rgba(129, 140, 248, 0.35), transparent);
 }
 
 /* ─── Skill pill ────────────────────────────────────── */

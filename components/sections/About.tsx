@@ -10,21 +10,29 @@ const pillars = [
     icon: <Code2 size={22} />,
     title: "Full Stack Web",
     desc: "End-to-end web applications from pixel-perfect UI to scalable APIs — Next.js, React, Node, MongoDB, PostgreSQL.",
+    gradient: "from-[#22d3ee] to-[#818cf8]",
+    iconBg: "bg-[#22d3ee]/10 text-[#22d3ee]",
   },
   {
     icon: <Smartphone size={22} />,
     title: "Mobile Apps",
     desc: "13+ cross-platform apps on the Play Store & App Store built with React Native for iOS and Android.",
+    gradient: "from-[#818cf8] to-[#a78bfa]",
+    iconBg: "bg-[#818cf8]/10 text-[#818cf8]",
   },
   {
     icon: <Brain size={22} />,
     title: "AI Integration",
     desc: "5 live AI-powered platforms — from computer vision to generative AI — integrated into production SaaS products.",
+    gradient: "from-[#22d3ee] to-[#6366f1]",
+    iconBg: "bg-[#22d3ee]/10 text-[#22d3ee]",
   },
   {
     icon: <Layers size={22} />,
     title: "SaaS & Platforms",
     desc: "Production-grade multi-role dashboards, Stripe subscriptions, OCR pipelines, and role-based access systems.",
+    gradient: "from-[#818cf8] to-[#22d3ee]",
+    iconBg: "bg-[#818cf8]/10 text-[#818cf8]",
   },
 ];
 
@@ -43,8 +51,10 @@ export default function About() {
 
   return (
     <section id="about" ref={ref} className="relative py-32 px-6 overflow-hidden">
-      {/* Subtle mid-page glow */}
-      <div className="blob blob-violet w-[400px] h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20" />
+      {/* Colored ambient light — no dark overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_0%_40%,rgba(34,211,238,0.10),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_70%,rgba(129,140,248,0.12),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_50%_100%,rgba(34,211,238,0.07),transparent)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
@@ -68,8 +78,10 @@ export default function About() {
             variants={fadeUp(1)}
             initial="hidden"
             animate={inView ? "show" : "hidden"}
-            className="space-y-5"
+            className="space-y-5 relative"
           >
+            {/* Subtle left accent glow */}
+            <div className="absolute -left-6 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#22d3ee]/40 to-transparent" />
             <p className="text-slate-300 text-lg leading-relaxed">
               I&apos;m a <span className="text-white font-semibold">Full Stack Developer</span> from
               Rawalpindi, Pakistan with a{" "}
@@ -132,9 +144,12 @@ export default function About() {
               variants={fadeUp(i + 3)}
               initial="hidden"
               animate={inView ? "show" : "hidden"}
-              className="glow-card rounded-2xl p-6 space-y-4"
+              className="glow-card card-accent-top rounded-2xl p-6 space-y-4"
+              style={{ "--accent-gradient": `linear-gradient(90deg, ${p.gradient})` } as React.CSSProperties}
             >
-              <div className="w-11 h-11 rounded-xl bg-cyan-dim flex items-center justify-center text-cyan-DEFAULT">
+              {/* Override the default gradient per card */}
+              <div className={`absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl bg-gradient-to-r ${p.gradient}`} />
+              <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${p.iconBg}`}>
                 {p.icon}
               </div>
               <h3 className="font-display font-bold text-base text-white">{p.title}</h3>

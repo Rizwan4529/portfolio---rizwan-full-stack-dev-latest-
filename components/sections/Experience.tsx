@@ -16,9 +16,14 @@ export default function Experience() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="experience" ref={ref} className="relative py-32 px-6 bg-[#070710]">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-DEFAULT/20 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-violet-DEFAULT/20 to-transparent" />
+    <section id="experience" ref={ref} className="relative py-32 px-6 bg-[#070710] overflow-hidden">
+      {/* Dividers */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#22d3ee]/40 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#818cf8]/40 to-transparent" />
+      {/* Rich gradient atmosphere */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_100%_0%,rgba(34,211,238,0.11),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_0%_100%,rgba(129,140,248,0.13),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#22d3ee]/[0.03] via-transparent to-[#818cf8]/[0.05] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto">
         <motion.div
@@ -52,7 +57,7 @@ export default function Experience() {
                   <Briefcase size={16} className={exp.current ? "text-cyan-DEFAULT" : "text-slate-500"} />
                 </div>
 
-                <div className="glow-card rounded-2xl p-7 space-y-4">
+                <div className="glow-card card-accent-left rounded-2xl p-7 pl-9 space-y-4">
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2 flex-wrap">
